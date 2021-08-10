@@ -1,0 +1,40 @@
+:root {
+  --red: #ff3c5c;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  /* background-color: #0c0d16; */
+  /* color: white; */
+}
+
+.bg-custom {
+  background-color: #0c0d16;
+}
+
+.btn-dark-red {
+  color: var(--red);
+  border-color: var(--red);
+  transition: 0.4s;
+}
+
+.btn-dark-red:hover {
+  color: white;
+  background-color: var(--red);
+}
+
+.title,
+.dropdown-toggle::after,
+.material-icons {
+  color: rgb(255, 255, 255);
+}
+
+.dropdown-item:hover {
+  color: var(--red);
+  background-color: rgb(235, 233, 233);
+}
+
+.dropdown-item:active,
+.dropdown-item:focus {
+  background-color: rgb(219, 215, 215);
+}
