@@ -1,40 +1,69 @@
 :root {
-  --red: #ff3c5c;
+  --orange: #ffd977;
+  --dark-orange: #fcc12c;
+  --blue: #89f3e7;
 }
 
 body {
   font-family: "Roboto Mono", monospace;
-  /* background-color: #0c0d16; */
-  /* color: white; */
+  /* background-color: black; */
+  letter-spacing: 1px;
 }
 
-.bg-custom {
-  background-color: #0c0d16;
+.offcanvas-start {
+  /* border-right: 5px solid var(--blue); */
+  /* background-color: #333; */
 }
 
 .btn-dark-red {
-  color: var(--red);
-  border-color: var(--red);
+  color: var(--orange);
+  border-color: var(--orange);
   transition: 0.4s;
 }
 
 .btn-dark-red:hover {
   color: white;
-  background-color: var(--red);
+  background-color: var(--orange);
+}
+
+.navbar-toggler {
+  border: 1px solid var(--orange) !important;
+}
+
+.navbar-toggler:hover {
+  box-shadow: 0 0 3px var(--orange);
+}
+
+.navbar-toggler:after,
+.navbar-toggler:focus {
+  box-shadow: 0 0 3px var(--dark-orange);
+}
+
+.btn-close {
+  box-shadow: none !important;
+  outline: none !important;
+  color: white !important;
+}
+
+.social-icons {
+  color: white;
 }
 
 .title,
 .dropdown-toggle::after,
 .material-icons {
-  color: rgb(255, 255, 255);
+  color: rgb(7, 7, 7);
 }
 
 .dropdown-item:hover {
-  color: var(--red);
-  background-color: rgb(235, 233, 233);
+  background-color: var(--orange);
 }
 
 .dropdown-item:active,
 .dropdown-item:focus {
   background-color: rgb(219, 215, 215);
+}
+
+.bg-image {
+  background-repeat: no-repeat;
 }
