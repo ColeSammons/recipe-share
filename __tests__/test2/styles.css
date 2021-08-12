@@ -34,7 +34,7 @@ body {
     width: 120px;
 }
 /* navbar */
-.navbar a {
+.nav-cat {
     color: #fff !important;
     margin: 0 20px;
     margin-top: 30px;
@@ -50,7 +50,7 @@ body {
     color: #fff;
     font-size: 26px;
 }
-
+.nav-drop:hover,
 .nav-link:hover {
     font-weight: 600;
     border-bottom: 1px solid #fff;
@@ -62,6 +62,14 @@ body {
     margin-top: 20px;
     padding: 6px 26px;
     font-size: 16px;
+}
+.dropdown-menu {
+    background-color: rgba(0, 0, 0,.8);
+}
+
+.nav-drop {
+    color: #fff !important;
+    background-color: transparent !important;
 }
 /* modal */
 .modal-content {
@@ -124,11 +132,16 @@ body {
         background-color: rgba(0, 0, 0, .8);
     }
 
-    .navbar-nav a {
-        margin: 0px 5px 0 17px;
-        margin-top: 30px;
+    .dropdown-menu {
+        background-color: transparent;
     }
 
+    .nav-cat {
+        margin: 0px 5px 0 17px;
+        margin-top: 0px;
+    }
+
+    .nav-drop:hover,
     .nav-link:hover {
         border-bottom: none;
     }

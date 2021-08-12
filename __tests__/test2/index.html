@@ -19,31 +19,58 @@
     <!-- header -->
     <section id="header">
         <nav class="navbar navbar-expand-lg fixed-top">
+            <!-- navbar toggler for mobile -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav mx-auto">
+                    <!-- home -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active nav-cat" aria-current="page" href="#">Home</a>
                     </li>
+                    <!-- Recipes -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Recipes</a>
+                        <a class="nav-link nav-cat" href="#">Recipes</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                    <!-- Categories -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-cat" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item nav-drop" href="#">Breakfast</a>
+                            <a class="dropdown-item nav-drop" href="#">Lunch</a>
+                            <a class="dropdown-item nav-drop" href="#">Dinner</a>
+                            <a class="dropdown-item nav-drop" href="#">Dessert</a>
+                            <a class="dropdown-item nav-drop" href="#">Drinks</a>
+                            <a class="dropdown-item nav-drop" href="#">Snacks and Appetizers</a>
+                        </div>
                     </li>
+                    <!-- Login -->
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="modal" data-target="#loginBackdrop" href="#">Login</a>
+                        <a class="nav-link nav-cat" data-toggle="modal" data-target="#loginBackdrop" href="#">Login</a>
                     </li>
+                    <!-- Logout -->
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="modal" data-target="#signupBackdrop" href="#">Signup</a>
+                        <a class="nav-link nav-cat" data-toggle="modal" data-target="#signupBackdrop"
+                            href="#">Signup</a>
+                    </li>
+                    <!-- Account -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-cat" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item nav-drop" href="#">Posts</a>
+                            <a class="dropdown-item nav-drop" href="#">Comments</a>
+                            <a class="dropdown-item nav-drop" href="#">Logout</a>
+                        </div>
                     </li>
                 </ul>
             </div>
         </nav>
     </section>
+
 
     <!-- login modal -->
     <div class="modal fade" id="loginBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
@@ -70,7 +97,8 @@
                         </div>
                         <div class="text-center">
                             <p class="my-1">Need to sign up?</p>
-                            <a href="#" id="createAccount" data-toggle="modal" data-target="#signupBackdrop" class="nextModal">Create an
+                            <a href="#" id="createAccount" data-toggle="modal" data-target="#signupBackdrop"
+                                class="nextModal">Create an
                                 account</a>
                         </div>
                         <div class="text-center mt-3">
@@ -97,8 +125,9 @@
                     <form>
                         <div class="form-group mb-0">
                             <label for="username"></label>
-                            <input type="username" autocomplete="off" maxlength="50" id="username"
+                            <input type="username" autocomplete="off" maxlength="20" id="username"
                                 placeholder="Username" class="form-control login">
+                            <small id="emailHelp" class="form-text text-muted"> Username must be 20 characters or less.</small>
                         </div>
                         <div class="form-group mb-0">
                             <label for="email"></label>
@@ -112,7 +141,8 @@
                         </div>
                         <div class="text-center">
                             <p class="my-1">Have an account?</p>
-                            <a href="#" id="loginAccount" data-toggle="modal" data-target="#signupBackdrop" class="nextModal">Login here</a>
+                            <a href="#" id="loginAccount" data-toggle="modal" data-target="#signupBackdrop"
+                                class="nextModal">Login here</a>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-black mt-3">Register</button>
