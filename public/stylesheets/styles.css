@@ -11,7 +11,7 @@ body {
 
 /* jumbotron */
 .jumbotron {
-    background-image: url(./hero.jpg);
+    background-image: url(/images/hero.jpg);
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -110,43 +110,82 @@ body {
 }
 
 /* recipe modal */
-#recipes {
-    background-color: #dbe5e6;
-    padding: 30px 0;
-}
 
 .recipeTitle {
     text-align: center;
-    padding: 25px 0px;
+    padding: 5px 0px;
 }
 .recipeTitle h1{
     font-size: 34px;
     padding-bottom: 5px;
 }
 
-.recipeTitle p {
-    font-size: 18px;
+.card {
+    margin: 20px 10px;
+    border: none !important;
+    transition: .2s;
+}
+
+.card:hover {
+    box-shadow: 0 0 5px black;
 }
 
 .card-body {
-    box-shadow: 0 0 20px 7px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 20px 7px rgba(0, 0, 0, .2);
+    padding: 0 15px 10px 15px;
 }
 
-.card {
-    margin: 20px 10px;
+.card-title {
+    margin-bottom: 5px;
 }
 
-.card-body a {
-    color: #0c7f90;
-    text-decoration: none;
-    font-size: 15px;
-    margin-top: auto;
-    font-weight: 600;
+.card-time {
+    font-size: 16px;
 }
 
-.card-body a:hover {
-    color: #63a6b0;
-    text-decoration: none;
+.card-rating {
+    color: gold;   
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.recipeUsername {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+/* badges */
+.cat-badge {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.breakfast-badge {
+    background-color: rgb(167, 29, 144);
+}
+
+.lunch-badge {
+    background-color: #dc3545;
+}
+
+.dinner-badge {
+    background-color: green;
+}
+
+.dessert-badge {
+    background-color: rgb(99, 99, 218)
+}
+
+.drinks-badge {
+    background-color: rgb(14, 112, 158);
+}
+
+.snack-apps-badge {
+    background-color: rgb(170, 97, 2);
 }
 
 /* input field for login modal */
