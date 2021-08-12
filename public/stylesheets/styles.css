@@ -38,6 +38,7 @@ body {
     color: #fff !important;
     margin: 0 20px;
     margin-top: 30px;
+    padding-bottom: 5px;
 }
 
 .navbar-toggler {
@@ -156,6 +157,16 @@ body {
     margin-bottom: 5px;
 }
 
+/* indiviual recipe modal  */
+.recipeUser{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.recipeInst {
+    border: 1px solid rgb(148, 146, 146);
+}
+
 /* badges */
 .cat-badge {
     margin-top: 10px;
@@ -263,6 +274,7 @@ body {
 }
 
 @media only screen and (max-width: 500px){
+    
     /* footer */
     footer .row{
         justify-content: center !important;

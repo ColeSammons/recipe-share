@@ -9,3 +9,8 @@ $("#loginAccount").click(function() {
     $("#signupBackdrop").modal('hide');
     $("#loginBackdrop").modal('show');
 });
+
+//displays recipe chosen by user
+$(window).on('load', function() {
+    $('#recipeChosen').modal('show');
+});
