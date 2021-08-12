@@ -9,10 +9,7 @@ body {
     overflow: hidden;
 }
 
-.bg-fade {
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
+/* jumbotron */
 .jumbotron {
     background-image: url(./hero.jpg);
     height: 100vh;
@@ -36,7 +33,7 @@ body {
 .intro img {
     width: 120px;
 }
-
+/* navbar */
 .navbar a {
     color: #fff !important;
     margin: 0 20px;
@@ -66,9 +63,60 @@ body {
     padding: 6px 26px;
     font-size: 16px;
 }
+/* modal */
+.modal-content {
+    border: none;
+}
 
-footer {
-   
+.modal-header {
+    border: none;
+    padding-top: 0px;
+}
+
+.close {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.nextModal {
+    color: #212529 !important;
+    border-bottom: 1px solid #e71f3d;
+}
+.nextModal:hover {
+    font-weight: 600;
+    text-decoration: none;
+
+}
+/* input field for login modal */
+.login {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.login:active,
+.login:focus {
+    border: 1px solid black !important;
+}
+/* button for login submit */
+.btn-black {
+    color: #fff !important;
+    background-color: #333;
+    border-color: #333;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-black:hover {
+    background-color: rgb(32, 32, 32);
+}
+
+.btn-black:active,
+.btn-black:focus {
+    background-color: rgb(32, 32, 32);
+    box-shadow: 0 0 3px black !important;
+}
+/* footer tint */
+.copyright {
+    font-size: 16px;
 }
 
 @media only screen and (max-width: 1000px){
@@ -92,7 +140,6 @@ footer {
 
 @media only screen and (max-width: 600px){
     .jumbotron {
-        /* font-size: 26px; */
         line-height: 1.7;
     }
 
