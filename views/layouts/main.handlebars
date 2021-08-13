@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -89,13 +90,13 @@
                         <div class="form-group mb-0">
                             <label for="email"></label>
                             <input type="email" autocomplete="off" maxlength="200" id="loginEmail" placeholder="Email"
-                                class="form-control login" aria-describedby="emailHelp" />
+                                class="form-control login" aria-describedby="emailHelp" required />
                         </div>
                         <!-- password -->
                         <div class="form-group mb-0">
                             <label for="InputPassword1"></label>
                             <input type="password" class="form-control login" id="loginrPassword" autocomplete="off"
-                                maxlength="50" placeholder="Password" />
+                                maxlength="50" placeholder="Password" required />
                         </div>
                         <!-- create account link -->
                         <div class="text-center">
@@ -130,7 +131,7 @@
                         <div class="form-group mb-0">
                             <label for="username"></label>
                             <input type="username" autocomplete="off" maxlength="20" id="username"
-                                placeholder="Username" class="form-control login" />
+                                placeholder="Username" class="form-control login" required />
                             <small id="emailHelp" class="form-text text-muted">
                                 &nbsp;&nbsp;&nbsp; *Username must be 20 characters or less.</small>
                         </div>
@@ -138,13 +139,13 @@
                         <div class="form-group mb-0">
                             <label for="email"></label>
                             <input type="email" autocomplete="off" maxlength="200" id="userEmail" placeholder="Email"
-                                class="form-control login" aria-describedby="emailHelp" />
+                                class="form-control login" aria-describedby="emailHelp" required />
                         </div>
                         <!-- password -->
                         <div class="form-group mb-0">
                             <label for="InputPassword1"></label>
                             <input type="password" class="form-control login" id="userPassword" autocomplete="off"
-                                maxlength="50" placeholder="Password" />
+                                maxlength="50" placeholder="Password" required />
                         </div>
                         <!-- login link -->
                         <div class="text-center">
@@ -193,14 +194,14 @@
                                                     <span class="card-time">35 min</span>
                                                 </span>
                                                 <span class="card-rating">
-                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star "></i>
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                     <i class="far fa-star"></i>
                                                 </span>
                                             </span>
-                                            <a href="#" class="stretched-link"></a>
+                                            <a href="/recipe" class="stretched-link"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -217,7 +218,8 @@
         <div class="intro">
             <img src="/images/logo.png" alt="" />
             <h1>RecipeShare</h1>
-            <button type="button" class="btn btn-outline-light">Share a Recipe</button>
+            <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#shareBackdrop">Share a
+                Recipe</button>
         </div>
         <!-- footer -->
         <footer class="text-white fixed-bottom">
@@ -237,6 +239,86 @@
             </div>
         </footer>
     </div>
+
+    {{!-- share recipe modal --}}
+    <div class="modal fade" id="shareBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header sticky-top bg-white">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="close-button">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="recipeTitle">
+                            <h1>RecipeShare</h1>
+                            <p>Add your recipe to the collection!</p>
+                        </div>
+                        <form>
+                            <div class="form-row">
+                                <!--recipe name-->
+                                <div class="form-group mb-0 col-lg-6">
+                                    <label for="InputRecipeName" class="mt-2">Recipe Name</label>
+                                    <input type="text" autocomplete="off" maxlength="25" id="recipeName"
+                                        placeholder="Recipe Name" class="form-control login text-custom" required />
+                                </div>
+                                <!--recipe category-->
+                                <div class="form-group mb-0 col-lg-6">
+                                    <label for="inputRecipeCategory" class="mt-2">Category</label>
+                                    <select id="inputRecipeCategory" class="form-control login text-custom" required>
+                                        <option selected></option>
+                                        <option>Breakfast</option>
+                                        <option>Lunch</option>
+                                        <option>Dinner</option>
+                                        <option>Dessert</option>
+                                        <option>Drinks</option>
+                                        <option>Snacks and Appetizers</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <!-- recipe serving size -->
+                                <div class="form-group mb-0 col-lg-6">
+                                    <label for="inputCookTime" class="mt-2">Serving Size</label>
+                                    <input type="number" class="form-control login text-custom" id="recipeCookTime"
+                                        autocomplete="off" min="1" max="999" placeholder="ex. 5" required />
+                                </div>
+                                <!-- recipe cook time -->
+                                <div class="form-group mb-0 col-lg-6">
+                                    <label for="inputCookTime" class="mt-2">Cook Time In Minutes</label>
+                                    <input type="number" class="form-control login text-custom" id="recipeCookTime"
+                                        autocomplete="off" min="1" max="999" placeholder="ex. 25" required />
+                                </div>
+                            </div>
+                            <!--ingredients-->
+                            <label for="inputIngredients" class="mt-2">Ingredients</label>
+                            <div class="form-row mb-0 ing-area">
+                                <div class="col-md-5 col-sm-6" id="1-i">
+                                    <input type="text" autocomplete="off" maxlength="30" 
+                                        placeholder="Ingredient" class="form-control login text-custom" required />
+                                </div>
+                                <div class="col-md-3 col-sm-6" id="1-m">
+                                    <input type="text" autocomplete="off" maxlength="20" 
+                                        placeholder="Measurement ex. 1/4 cup" class="form-control login text-custom"
+                                        required />
+                                </div>
+                            </div>
+                            <a class="btn btn-black" id="add-ing">Add Ingredient</a>
+                            <a class="btn btn-black" id="remove-ing">Remove Ingredient</a>
+                            <!-- share recipe -->
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-black" id="share">Share!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
