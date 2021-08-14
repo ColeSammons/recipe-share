@@ -281,6 +281,20 @@ body {
     color: black;
 }
 
+.btn-ing {
+    font-size: 30px;
+    padding: 5px;
+}
+
+.fa-plus-circle:before {
+    font-size: 26px;
+}
+
+.fa-minus-circle:before {
+    font-size: 26px;
+}
+
+
 /* footer */
 .copyright {
   font-size: 16px;

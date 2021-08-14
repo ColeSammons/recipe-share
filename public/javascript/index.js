@@ -27,6 +27,7 @@ $("#add-ing").click(function () {
     $(".ing-area").append(new_input);
 });
 
+//remove ingredient line in recipe sharing
 $('#remove-ing').click(function () {
     console.log($(".ing-area").children().last().attr('id'));
     let num = $(".ing-area").children().last().attr('id').split("-");
@@ -38,6 +39,35 @@ $('#remove-ing').click(function () {
     $(`#${id}-i`).remove();
    }
 });
+
+// Turn input element into a pond
+$('.my-pond').filepond();
+
+// Turn input element into a pond with configuration options
+// $('.my-pond').filepond({
+//     allowMultiple: true,
+// });
+
+// Set allowMultiple property to true
+// $('.my-pond').filepond('allowMultiple', false);
+
+// Listen for addfile event
+$('.my-pond').on('FilePond:addfile', function (e) {
+    // console.log('file added event', e);
+    
+});
+
+$("#fileInput").change(function () {
+    console.log(this);
+});
+
+// Manually add a file using the addfile method
+// $('.my-pond')
+//     .filepond('addFile', 'index.html')
+//     .then(function (file) {
+//         console.log('file added', file);
+//     });
+
 
 //recipe.js
 //displays recipe chosen by user

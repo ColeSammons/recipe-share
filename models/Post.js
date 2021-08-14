@@ -1,36 +1,78 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Post extends Model {
 
 }
 
-Post.init (
-    {
-        id: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-          primaryKey: true,
-          autoIncrement: true
-        },
-        title: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        
-        user_id: {
-          type: DataTypes.INTEGER,
-          references: {
-            model: 'user',
-            key: 'id'
+Post.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    serving: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isInt: true,
+        isDecimal: false
+      }
+    },
+    time: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isInt: true,
+        isDecimal: false
+      }
+    },
+    directions: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    notes: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    pic_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isURL: true
+      }
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isCat(value) {
+          if (value != "Breakfast" | "Lunch" | "Dinner" | "Dessert" | "Drinks" | "Snacks and Appetizers") {
+            throw new Error('Select a permitted category');
           }
         }
-      },
-      {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'post'
       }
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id'
+      }
+    }
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'post'
+  }
 )
+
+module.exports = Post;

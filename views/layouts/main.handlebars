@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/styles.css" />
     <title>RecipeShare</title>
 </head>
@@ -281,8 +282,8 @@
                             <div class="form-row">
                                 <!-- recipe serving size -->
                                 <div class="form-group mb-0 col-lg-6">
-                                    <label for="inputCookTime" class="mt-2">Serving Size</label>
-                                    <input type="number" class="form-control login text-custom" id="recipeCookTime"
+                                    <label for="inputServingSize" class="mt-2">Serving Size</label>
+                                    <input type="number" class="form-control login text-custom" id="recipeserving"
                                         autocomplete="off" min="1" max="999" placeholder="ex. 5" required />
                                 </div>
                                 <!-- recipe cook time -->
@@ -296,17 +297,34 @@
                             <label for="inputIngredients" class="mt-2">Ingredients</label>
                             <div class="form-row mb-0 ing-area">
                                 <div class="col-md-5 col-sm-6" id="1-i">
-                                    <input type="text" autocomplete="off" maxlength="30" 
-                                        placeholder="Ingredient" class="form-control login text-custom" required />
+                                    <input type="text" autocomplete="off" maxlength="30" placeholder="Ingredient"
+                                        class="form-control login text-custom" required />
                                 </div>
                                 <div class="col-md-3 col-sm-6" id="1-m">
-                                    <input type="text" autocomplete="off" maxlength="20" 
+                                    <input type="text" autocomplete="off" maxlength="20"
                                         placeholder="Measurement ex. 1/4 cup" class="form-control login text-custom"
                                         required />
                                 </div>
                             </div>
-                            <a class="btn btn-black" id="add-ing">Add Ingredient</a>
-                            <a class="btn btn-black" id="remove-ing">Remove Ingredient</a>
+                            <a class="btn btn-ing" id="add-ing"><i class="fas fa-plus-circle"></i></a>
+                            <a class="btn btn-ing" id="remove-ing"><i class="fas fa-minus-circle"></i></i></a>
+                            <!-- recipe directions -->
+                            <div class="form-group mb-0">
+                                <label for="directionText">Directions</label>
+                                <textarea class="form-control login text-custom" id="directionText" rows="4"
+                                    maxlength="5000" required></textarea>
+                            </div>
+                            <!-- recipe notes -->
+                            <div class="form-group mb-0">
+                                <label for="NotesText">Notes</label>
+                                <textarea class="form-control login text-custom" id="NotesText" rows="2"
+                                    maxlength="3000" required></textarea>
+                            </div>
+                            <!-- image upload -->
+                            <div class="form-group">
+                                <label for="inputImage" class="mt-2">Upload a picture of the final product!</label>
+                                <input type="file" class="my-pond" id="fileInput" required>
+                            </div>
                             <!-- share recipe -->
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn btn-black" id="share">Share!</button>
@@ -329,6 +347,8 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/54cb967ed1.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
     <script src="/javascript/index.js"></script>
 </body>
 
