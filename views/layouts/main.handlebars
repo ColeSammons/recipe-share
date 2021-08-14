@@ -182,17 +182,18 @@
                                 <p>Recipes from all your fellow sharers</p>
                             </div>
                             <div class="row">
+                                {{#each posts}}
                                 <div class="col-lg-4 col-md-12" href="#">
                                     <div class="card">
-                                        <img src="/images/recipe1.jpg" alt="ramen noodles" class="card-img-top" />
+                                        <img src="{{pic_url}}" alt="{{name}}" class="card-img-top" />
                                         <div class="card-body">
-                                            <span class="badge breakfast-badge cat-badge">Lunch</span>
-                                            <h5 class="card-title">Pork Ramen</h5>
-                                            <p class="recipeUsername">By: ColeSammons</p>
+                                            <span class="badge {{category}}-badge cat-badge">{{category}}</span>
+                                            <h5 class="card-title">{{name}}</h5>
+                                            <p class="recipeUsername">By: {{user.username}}</p>
                                             <span class="d-flex justify-content-between">
                                                 <span>
                                                     <i class="far fa-clock card-time"></i>
-                                                    <span class="card-time">35 min</span>
+                                                    <span class="card-time">{{time}} min</span>
                                                 </span>
                                                 <span class="card-rating">
                                                     <i class="fas fa-star "></i>
@@ -202,10 +203,11 @@
                                                     <i class="far fa-star"></i>
                                                 </span>
                                             </span>
-                                            <a href="/recipe" class="stretched-link"></a>
+                                            <a href="/recipe/{{id}}" class="stretched-link"></a>
                                         </div>
                                     </div>
                                 </div>
+                                {{/each}}
                             </div>
                         </div>
                     </div>

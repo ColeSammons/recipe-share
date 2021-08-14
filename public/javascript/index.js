@@ -29,15 +29,12 @@ $("#add-ing").click(function () {
 
 //remove ingredient line in recipe sharing
 $('#remove-ing').click(function () {
-    console.log($(".ing-area").children().last().attr('id'));
     let num = $(".ing-area").children().last().attr('id').split("-");
-    console.log(num);
     let id = num[0];
-    console.log(id);
-   if(id != 1) {
-    $(`#${id}-m`).remove();
-    $(`#${id}-i`).remove();
-   }
+    if (id != 1) {
+        $(`#${id}-m`).remove();
+        $(`#${id}-i`).remove();
+    }
 });
 
 // Turn input element into a pond
@@ -54,7 +51,7 @@ $('.my-pond').filepond();
 // Listen for addfile event
 $('.my-pond').on('FilePond:addfile', function (e) {
     // console.log('file added event', e);
-    
+
 });
 
 $("#fileInput").change(function () {

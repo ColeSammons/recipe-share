@@ -11,20 +11,22 @@
                 <div id="recipes">
                     <div class="container justify-content-center d-flex">
                         <div class="col-lg-12">
-                            <img src="/images/recipe1.jpg" alt="ramen noodles" class="img-fluid" />
+                            <img src="{{pic_url}}" alt="{{name}}" class="img-fluid" />
                             <div class="recipeTitle">
-                                <h1>Pork Ramen</h1>
+                                <h1>{{name}}</h1>
                             </div>
                             <div class="row">
                                 <span class="recipe-text col-lg-3 text-center">
-                                    FarmerBubbaJoe
+                                    {{#each comments}}
+                                        {{user.username}}
+                                    {{/each}}
                                 </span>
                                 <span class="col-lg-3 text-center">
                                     <i class="far fa-clock card-time"></i>
-                                    <span class="card-time">35 min</span>
+                                    <span class="card-time">{{time}} min</span>
                                 </span>
                                 <span class="col-lg-3 text-center">
-                                    <span class="recipe-text">Yield: 4 servings</span>
+                                    <span class="recipe-text">Yield: {{serving}} servings</span>
                                 </span>
                                 <span class="card-rating col-lg-3 text-center">
                                     <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
@@ -44,7 +46,7 @@
                             <div class="col-lg-10 recipeInst mx-auto my-3 p-3">
                                 <h4 class="text-center">Ingredients</h4>
                                 <ul class="m-3 row bottom-border">
-                                    <span class="col-lg-6 p-0">
+                                    {{!-- <span class="col-lg-6 p-0">
                                         <li class="ing-list">olive oil</li>
                                     </span>
                                     <span class="col-lg-6 p-0">
@@ -67,28 +69,23 @@
                                     </span>
                                     <span class="col-lg-6 p-0">
                                         <li class="ing-list">noodles</li>
+                                    </span> --}}
+                                    {{#each ingredients}}
+                                        <span class="col-lg-6 p-0">
+                                        <li class="ing-list">{{measure}} {{name}}</li>
                                     </span>
+                                    {{/each}}
                                 </ul>
                                 <div class="bottom-border">
                                     <h4 class="text-center">Directions</h4>
-                                    <p class="mb-1">To soak the beans overnight, place them in a large bowl or pot and
-                                        cover them
-                                        with a few inches of water. Drain the beans in the morning.
-                                        Heat a large pot over medium heat and add the butter and olive oil. Stir in the
-                                        onion, garlic, salt, pepper and pepper flakes. Cook until the onions soften,
-                                        about 5 minutes.
-                                        Add the diced tomatoes and vegetable stock. Add the bread in chunks. Stir in the
-                                        beans, parmesan cheese and parmesan rind. Bring the mixture to a boil, then
-                                        reduce it to a simmer and cover it. Cook for 30 to 40 minutes, stirring
-                                        occasionally to make sure nothing is sticking to the bottom. If it is, reduce
-                                        the heat!
+                                    <p class="mb-1">{{directions}}
                                     </p>
                                 </div>
                                 <div>
                                     <h4 class="text-center mt-3">Notes</h4>
                                     <ul>
-                                        <li class="ing-list">If you have dry beans, soak them overnight instead.</li>
-                                        <li class="ing-list">If you have dry beans, soak them overnight instead.</li>
+                                        <li class="ing-list">{{notes}}</li>
+                                        
                                     </ul>
                                 </div>
                             </div>
