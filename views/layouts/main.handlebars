@@ -46,18 +46,10 @@
                             <a class="dropdown-item nav-drop" href="#">Dinner</a>
                             <a class="dropdown-item nav-drop" href="#">Dessert</a>
                             <a class="dropdown-item nav-drop" href="#">Drinks</a>
-                            <a class="dropdown-item nav-drop" href="#">Snacks and Appetizers</a>
+                            <a class="dropdown-item nav-drop" href="#">Snacks</a>
                         </div>
                     </li>
-                    <!-- Login -->
-                    <li class="nav-item">
-                        <a class="nav-link nav-cat" data-toggle="modal" data-target="#loginBackdrop" href="#">Login</a>
-                    </li>
-                    <!-- Logout -->
-                    <li class="nav-item">
-                        <a class="nav-link nav-cat" data-toggle="modal" data-target="#signupBackdrop"
-                            href="#">Signup</a>
-                    </li>
+                    {{#if loggedIn}}
                     <!-- Account -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-cat" href="#" id="navbarDropdown" role="button"
@@ -66,14 +58,25 @@
                             <a class="dropdown-item nav-drop" href="#">Posts</a>
                             <a class="dropdown-item nav-drop" href="#">Comments</a>
                             <a class="dropdown-item nav-drop" href="#">Ratings</a>
-                            <a class="dropdown-item nav-drop" href="#">Logout</a>
+                            <a class="dropdown-item nav-drop" href="#" id="logout-form">Logout</a>
                         </div>
                     </li>
+                    {{else}}
+                    <!-- Login -->
+                    <li class="nav-item">
+                        <a class="nav-link nav-cat" data-toggle="modal" data-target="#loginBackdrop" href="#">Login</a>
+                    </li>
+                    <!-- Signup -->
+                    <li class="nav-item">
+                        <a class="nav-link nav-cat" data-toggle="modal" data-target="#signupBackdrop"
+                            href="#">Signup</a>
+                    </li>
+                    {{/if}}
                 </ul>
             </div>
         </nav>
     </section>
-
+    {{#unless loggedIn}}
     <!-- login modal -->
     <div class="modal fade" id="loginBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -96,7 +99,7 @@
                         <!-- password -->
                         <div class="form-group mb-0">
                             <label for="InputPassword1"></label>
-                            <input type="password" class="form-control login" id="loginrPassword" autocomplete="off"
+                            <input type="password" class="form-control login" id="loginPassword" autocomplete="off"
                                 maxlength="50" placeholder="Password" required />
                         </div>
                         <!-- create account link -->
@@ -107,7 +110,7 @@
                         </div>
                         <!-- login -->
                         <div class="text-center mt-3">
-                            <button type="submit" class="btn btn-black">Login</button>
+                            <button type="submit" class="btn btn-black" id="login-form">Login</button>
                         </div>
                     </form>
                 </div>
@@ -156,13 +159,14 @@
                         </div>
                         <!-- register -->
                         <div class="text-center">
-                            <button type="submit" class="btn btn-black mt-3">Register</button>
+                            <button type="submit" class="btn btn-black mt-3" id="signup-form">Register</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    {{/unless}}
 
     <!-- recipe modal -->
     <div class="modal fade" id="recipeBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
@@ -182,12 +186,12 @@
                                 <p>Recipes from all your fellow sharers</p>
                             </div>
                             <div class="row">
-                                {{#each posts}}
+                                {{#each post}}
                                 <div class="col-lg-4 col-md-12" href="#">
                                     <div class="card">
                                         <img src="{{pic_url}}" alt="{{name}}" class="card-img-top" />
                                         <div class="card-body">
-                                            <span class="badge {{category}}-badge cat-badge">{{category}}</span>
+                                            <span class="badge badge{{category}} cat-badge">{{category}}</span>
                                             <h5 class="card-title">{{name}}</h5>
                                             <p class="recipeUsername">By: {{user.username}}</p>
                                             <span class="d-flex justify-content-between">
@@ -221,8 +225,13 @@
         <div class="intro">
             <img src="/images/logo.png" alt="" />
             <h1>RecipeShare</h1>
+            {{#if loggedIn}}
             <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#shareBackdrop">Share a
                 Recipe</button>
+                {{else}}
+                <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#loginBackdrop">Share a
+                Recipe</button>
+            {{/if}}
         </div>
         <!-- footer -->
         <footer class="text-white fixed-bottom">
@@ -243,6 +252,7 @@
         </footer>
     </div>
 
+    {{#if loggedIn}}
     {{!-- share recipe modal --}}
     <div class="modal fade" id="shareBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -277,7 +287,7 @@
                                         <option>Dinner</option>
                                         <option>Dessert</option>
                                         <option>Drinks</option>
-                                        <option>Snacks and Appetizers</option>
+                                        <option>Snacks</option>
                                     </select>
                                 </div>
                             </div>
@@ -298,11 +308,11 @@
                             <!--ingredients-->
                             <label for="inputIngredients" class="mt-2">Ingredients</label>
                             <div class="form-row mb-0 ing-area">
-                                <div class="col-md-5 col-sm-6" id="1-i">
+                                <div class="col-md-6" id="1-i">
                                     <input type="text" autocomplete="off" maxlength="30" placeholder="Ingredient"
                                         class="form-control login text-custom" required />
                                 </div>
-                                <div class="col-md-3 col-sm-6" id="1-m">
+                                <div class="col-md-6 col-lg-5" id="1-m">
                                     <input type="text" autocomplete="off" maxlength="20"
                                         placeholder="Measurement ex. 1/4 cup" class="form-control login text-custom"
                                         required />
@@ -337,7 +347,7 @@
             </div>
         </div>
     </div>
-
+    {{/if}}
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

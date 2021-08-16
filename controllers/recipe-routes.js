@@ -14,7 +14,6 @@ router.get('/:id', (req, res) => {
               },
               {
                 model: Comment,
-                attributes: ['id', 'text', 'post_id', 'user_id'],
                 include: {
                   model: User,
                   attributes: ['username']
@@ -23,6 +22,10 @@ router.get('/:id', (req, res) => {
               {
                 model: Rate,
                 attributes: ['id', 'rating', 'user_id', 'post_id']
+              },
+              {
+                model: User,
+                attributes: ['username']
               }
         ]
     })
@@ -34,7 +37,7 @@ router.get('/:id', (req, res) => {
             const post = dbPostData.get({ plain: true });
             console.log(post);
 
-            res.render('recipe', post);
+            res.render('recipe', {post, loggedIn: req.session.loggedIn});
         })
         .catch(err => {
             console.log(err);

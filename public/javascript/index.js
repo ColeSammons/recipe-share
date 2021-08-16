@@ -27,6 +27,82 @@ $("#add-ing").click(function () {
     $(".ing-area").append(new_input);
 });
 
+//login, signup, and logout
+async function loginHandler(event) {
+    event.preventDefault();
+    const email = $("#loginEmail").val().trim();
+    const password = $("#loginPassword").val().trim();
+
+    console.log(email);
+    console.log(password);
+
+
+    if (email && password) {
+        const response = await fetch('/api/users/login', {
+            method: 'post',
+            body: JSON.stringify({
+                email,
+                password
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            alert(response.statusText);
+        }
+    }
+};
+async function signupHandler(event) {
+    event.preventDefault();
+
+    const username = $('#username').val().trim();
+    const email = $('#userEmail').val().trim();
+    const password = $('#userPassword').val().trim();
+
+    console.log(username);
+    console.log(email);
+    console.log(password);
+
+    if (username && email && password) {
+        const response = await fetch('/api/users', {
+            method: 'post',
+            body: JSON.stringify({
+                username,
+                email,
+                password
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            alert(response.statusText);
+        }
+    }
+};
+
+async function logoutHandler(event) {
+    const response = await fetch('/api/users/logout', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.ok) {
+        document.location.replace('/');
+    } else {
+        alert(response.statusText);
+    }
+}
+
+$('#login-form').click(loginHandler);
+$("#signup-form").click(signupHandler);
+$("#logout-form").click(logoutHandler);
+
+
+
 //remove ingredient line in recipe sharing
 $('#remove-ing').click(function () {
     let num = $(".ing-area").children().last().attr('id').split("-");
@@ -36,6 +112,11 @@ $('#remove-ing').click(function () {
         $(`#${id}-i`).remove();
     }
 });
+
+
+
+
+
 
 // Turn input element into a pond
 $('.my-pond').filepond();
@@ -66,8 +147,50 @@ $("#fileInput").change(function () {
 //     });
 
 
+
+
+
+
+
+
+
 //recipe.js
 //displays recipe chosen by user
 $(window).on('load', function () {
     $('#recipeChosen').modal('show');
 });
+
+//comment post
+async function commentHandler(event) {
+    event.preventDefault();
+
+    const text = $('#commentText').val().trim();
+    const post_id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
+
+    console.log(text);
+    console.log(post_id);
+    
+
+    if (text) {
+        const response = await fetch('/api/comment', {
+            method: 'POST',
+            body: JSON.stringify({
+                text,
+                post_id
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            document.location.reload();
+        } else {
+            alert(response.statusText);
+        }
+    }
+}
+
+$('#comment-submit').click(commentHandler)

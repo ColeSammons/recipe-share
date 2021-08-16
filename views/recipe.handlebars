@@ -3,30 +3,32 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header sticky-top bg-white">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    onclick="window.location.href='/'">
                     <span aria-hidden="true" class="close-button">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div id="recipes">
                     <div class="container justify-content-center d-flex">
-                        <div class="col-lg-12">
-                            <img src="{{pic_url}}" alt="{{name}}" class="img-fluid" />
+                        <div class="col-lg-12 adjust-padding">
+                            <img src="{{post.pic_url}}" alt="{{post.name}}" class="img-fluid" />
                             <div class="recipeTitle">
-                                <h1>{{name}}</h1>
+                                <h1 class="mb-0">{{post.name}}</h1>
+                            </div>
+                            <div class="text-center">
+                                <span class="badge badge{{post.category}} cat-badge my-0">{{post.category}}</span>
                             </div>
                             <div class="row">
                                 <span class="recipe-text col-lg-3 text-center">
-                                    {{#each comments}}
-                                        {{user.username}}
-                                    {{/each}}
+                                    {{post.user.username}}
                                 </span>
                                 <span class="col-lg-3 text-center">
                                     <i class="far fa-clock card-time"></i>
-                                    <span class="card-time">{{time}} min</span>
+                                    <span class="card-time">{{post.time}} min</span>
                                 </span>
                                 <span class="col-lg-3 text-center">
-                                    <span class="recipe-text">Yield: {{serving}} servings</span>
+                                    <span class="recipe-text">Yield: {{post.serving}} servings</span>
                                 </span>
                                 <span class="card-rating col-lg-3 text-center">
                                     <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
@@ -46,48 +48,43 @@
                             <div class="col-lg-10 recipeInst mx-auto my-3 p-3">
                                 <h4 class="text-center">Ingredients</h4>
                                 <ul class="m-3 row bottom-border">
-                                    {{!-- <span class="col-lg-6 p-0">
-                                        <li class="ing-list">olive oil</li>
-                                    </span>
+                                    {{#each post.ingredients}}
                                     <span class="col-lg-6 p-0">
-                                        <li class="ing-list">pork loin</li>
-                                    </span>
-                                    <span class="col-lg-6 p-0">
-                                        <li class="ing-list">chili flakes</li>
-                                    </span>
-                                    <span class="col-lg-6 p-0">
-                                        <li class="ing-list">garlic</li>
-                                    </span>
-                                    <span class="col-lg-6 p-0">
-                                        <li class="ing-list">pepper</li>
-                                    </span>
-                                    <span class="col-lg-6 p-0">
-                                        <li class="ing-list">salt</li>
-                                    </span>
-                                    <span class="col-lg-6 p-0">
-                                        <li class="ing-list">paprika</li>
-                                    </span>
-                                    <span class="col-lg-6 p-0">
-                                        <li class="ing-list">noodles</li>
-                                    </span> --}}
-                                    {{#each ingredients}}
-                                        <span class="col-lg-6 p-0">
                                         <li class="ing-list">{{measure}} {{name}}</li>
                                     </span>
                                     {{/each}}
                                 </ul>
                                 <div class="bottom-border">
                                     <h4 class="text-center">Directions</h4>
-                                    <p class="mb-1">{{directions}}
+                                    <p class="mb-1">{{post.directions}}
                                     </p>
                                 </div>
-                                <div>
+                                <div class="">
                                     <h4 class="text-center mt-3">Notes</h4>
                                     <ul>
-                                        <li class="ing-list">{{notes}}</li>
-                                        
+                                        <li class="ing-list">{{post.notes}}</li>
                                     </ul>
                                 </div>
+                            </div>
+                            <div class="col-lg-10 mx-auto my-0 px-3 py-0">
+                                <h4 class="text-center mt-3">Comments</h4>
+                                <label for="NotesText" class="comment-text">Leave a comment!</label>
+                                <textarea class="form-control login text-custom font-comment" id="commentText" rows="2"
+                                    maxlength="3000" placeholder="What did you think about this recipe?" required></textarea>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-black comment-button" id="comment-submit">Comment</button>
+                                </div>
+                                {{#each post.comments}}
+                                <section class="comment my-1">
+                                    <div class="meta">
+                                        {{user.username}} on {{format_date createdAt}}
+                                    </div>
+                                    <div class="text">
+                                        {{text}}
+                                    </div>
+                                </section>
+                                {{/each}}
+
                             </div>
                         </div>
                     </div>

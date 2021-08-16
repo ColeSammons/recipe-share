@@ -129,6 +129,10 @@ body {
   box-shadow: 0 0 5px black;
 }
 
+.card img {
+  max-height: 300px;
+}
+
 .card-body {
   box-shadow: 0 0 20px 7px rgba(0, 0, 0, 0.2);
   padding: 0 15px 10px 15px;
@@ -173,7 +177,6 @@ body {
 
 .ing-list {
   font-size: 18px;
-  /* text-align: center; */
   list-style-position: inside;
   margin-bottom: 10px;
 }
@@ -181,6 +184,28 @@ body {
 .ul-position {
   text-align: center;
   list-style-position: inside;
+}
+
+.meta {
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.text {
+  font-size: 20px;
+  word-wrap: break-word;
+}
+
+.comment-text {
+  font-size: 14px;
+}
+
+.comment-button {
+  font-size: 12px;
+}
+
+.font-comment {
+  font-size: 20px;
 }
 
 /* badges */
@@ -191,27 +216,27 @@ body {
   color: #fff;
 }
 
-.breakfast-badge {
+.badgeBreakfast {
   background-color: rgb(167, 29, 144);
 }
 
-.lunch-badge {
+.badgeLunch {
   background-color: #dc3545;
 }
 
-.dinner-badge {
+.badgeDinner {
   background-color: green;
 }
 
-.dessert-badge {
+.badgeDessert {
   background-color: rgb(99, 99, 218);
 }
 
-.drinks-badge {
+.badgeDrinks {
   background-color: rgb(14, 112, 158);
 }
 
-.snack-apps-badge {
+.badgeSnacks {
   background-color: rgb(170, 97, 2);
 }
 
@@ -323,6 +348,12 @@ body {
   .intro {
     padding-top: 130px;
   }
+
+  /* single recipe */
+  .comment-button {
+    width: 100%;
+    margin-top: 5px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -344,6 +375,11 @@ body {
   .recipeInst {
     padding: 5px;
   }
+
+  .adjust-padding {
+    padding: 0;
+  }
+
 }
 
 @media only screen and (max-width: 500px) {

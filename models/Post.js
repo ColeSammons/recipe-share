@@ -50,14 +50,7 @@ Post.init(
     },
     category: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isCat(value) {
-          if (value != "Breakfast" | "Lunch" | "Dinner" | "Dessert" | "Drinks" | "Snacks and Appetizers") {
-            throw new Error('Select a permitted category');
-          }
-        }
-      }
+      allowNull: false
     },
     user_id: {
       type: DataTypes.INTEGER,
