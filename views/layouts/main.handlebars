@@ -55,8 +55,8 @@
                         <a class="nav-link dropdown-toggle nav-cat" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item nav-drop" href="#">Posts</a>
-                            <a class="dropdown-item nav-drop" href="#">Comments</a>
+                            <a class="dropdown-item nav-drop" href="/post/{{userId}}">Posts</a>
+                            <a class="dropdown-item nav-drop" href="/comment/{{userId}}">Comments</a>
                             <a class="dropdown-item nav-drop" href="#">Ratings</a>
                             <a class="dropdown-item nav-drop" href="#" id="logout-form">Logout</a>
                         </div>
@@ -76,151 +76,8 @@
             </div>
         </nav>
     </section>
-    {{#unless loggedIn}}
-    <!-- login modal -->
-    <div class="modal fade" id="loginBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="close-button">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h3 class="text-center">Login</h3>
-                    <form>
-                        <!-- email -->
-                        <div class="form-group mb-0">
-                            <label for="email"></label>
-                            <input type="email" autocomplete="off" maxlength="200" id="loginEmail" placeholder="Email"
-                                class="form-control login" aria-describedby="emailHelp" required />
-                        </div>
-                        <!-- password -->
-                        <div class="form-group mb-0">
-                            <label for="InputPassword1"></label>
-                            <input type="password" class="form-control login" id="loginPassword" autocomplete="off"
-                                maxlength="50" placeholder="Password" required />
-                        </div>
-                        <!-- create account link -->
-                        <div class="text-center">
-                            <p class="my-1">Need to sign up?</p>
-                            <a href="#" id="createAccount" data-toggle="modal" data-target="#signupBackdrop"
-                                class="nextModal">Create an account</a>
-                        </div>
-                        <!-- login -->
-                        <div class="text-center mt-3">
-                            <button type="submit" class="btn btn-black" id="login-form">Login</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Signup modal -->
-    <div class="modal fade" id="signupBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="close-button">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h3 class="text-center">Signup</h3>
-                    <form>
-                        <!-- username -->
-                        <div class="form-group mb-0">
-                            <label for="username"></label>
-                            <input type="username" autocomplete="off" maxlength="20" id="username"
-                                placeholder="Username" class="form-control login" required />
-                            <small id="emailHelp" class="form-text text-muted">
-                                &nbsp;&nbsp;&nbsp; *Username must be 20 characters or less.</small>
-                        </div>
-                        <!-- email -->
-                        <div class="form-group mb-0">
-                            <label for="email"></label>
-                            <input type="email" autocomplete="off" maxlength="200" id="userEmail" placeholder="Email"
-                                class="form-control login" aria-describedby="emailHelp" required />
-                        </div>
-                        <!-- password -->
-                        <div class="form-group mb-0">
-                            <label for="InputPassword1"></label>
-                            <input type="password" class="form-control login" id="userPassword" autocomplete="off"
-                                maxlength="50" placeholder="Password" required />
-                        </div>
-                        <!-- login link -->
-                        <div class="text-center">
-                            <p class="my-1">Have an account?</p>
-                            <a href="#" id="loginAccount" data-toggle="modal" data-target="#signupBackdrop"
-                                class="nextModal">Login here</a>
-                        </div>
-                        <!-- register -->
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-black mt-3" id="signup-form">Register</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{/unless}}
-
-    <!-- recipe modal -->
-    <div class="modal fade" id="recipeBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
-        aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <div class="modal-header sticky-top bg-white">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="close-button">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div id="recipes">
-                        <div class="container">
-                            <div class="recipeTitle">
-                                <h1>Recipes</h1>
-                                <p>Recipes from all your fellow sharers</p>
-                            </div>
-                            <div class="row">
-                                {{#each post}}
-                                <div class="col-lg-4 col-md-12" href="#">
-                                    <div class="card">
-                                        <img src="{{pic_url}}" alt="{{name}}" class="card-img-top" />
-                                        <div class="card-body">
-                                            <span class="badge badge{{category}} cat-badge">{{category}}</span>
-                                            <h5 class="card-title">{{name}}</h5>
-                                            <p class="recipeUsername">By: {{user.username}}</p>
-                                            <span class="d-flex justify-content-between">
-                                                <span>
-                                                    <i class="far fa-clock card-time"></i>
-                                                    <span class="card-time">{{time}} min</span>
-                                                </span>
-                                                <span class="card-rating">
-                                                    <i class="fas fa-star "></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </span>
-                                            </span>
-                                            <a href="/recipe/{{id}}" class="stretched-link"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{/each}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{{body}}}
-    <!-- jumbotron -->
+     <!-- jumbotron -->
     <div class="jumbotron text-center">
         <div class="intro">
             <img src="/images/logo.png" alt="" />
@@ -252,9 +109,16 @@
         </footer>
     </div>
 
-    {{#if loggedIn}}
-    {{!-- share recipe modal --}}
-    <div class="modal fade" id="shareBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+    {{#unless loggedIn}}
+    <!-- login modal -->
+    {{> login}}
+
+    <!-- Signup modal -->
+    {{> signup}}
+    {{/unless}}
+
+    <!-- multiple recipe modal -->
+    <div class="modal fade" id="recipeBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
@@ -264,104 +128,30 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="container">
-                        <div class="recipeTitle">
-                            <h1>RecipeShare</h1>
-                            <p>Add your recipe to the collection!</p>
+                    <div id="recipes">
+                        <div class="container">
+                            <div class="recipeTitle">
+                                <h1>Recipes</h1>
+                                <p>Recipes from all your fellow sharers</p>
+                            </div>
+                            <div class="row">
+                                {{#each post}}
+                                    {{> card}}
+                                {{/each}}
+                            </div>
                         </div>
-                        <form>
-                            <div class="form-row">
-                                <!--recipe name-->
-                                <div class="form-group mb-0 col-lg-6">
-                                    <label for="InputRecipeName" class="mt-2">Recipe Name</label>
-                                    <input type="text" autocomplete="off" maxlength="25" id="recipeName"
-                                        placeholder="Recipe Name" class="form-control login text-custom" required />
-                                </div>
-                                <!--recipe category-->
-                                <div class="form-group mb-0 col-lg-6">
-                                    <label for="inputRecipeCategory" class="mt-2">Category</label>
-                                    <select id="inputRecipeCategory" class="form-control login text-custom" required>
-                                        <option selected></option>
-                                        <option>Breakfast</option>
-                                        <option>Lunch</option>
-                                        <option>Dinner</option>
-                                        <option>Dessert</option>
-                                        <option>Drinks</option>
-                                        <option>Snacks</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <!-- recipe serving size -->
-                                <div class="form-group mb-0 col-lg-6">
-                                    <label for="inputServingSize" class="mt-2">Serving Size</label>
-                                    <input type="number" class="form-control login text-custom" id="recipeserving"
-                                        autocomplete="off" min="1" max="999" placeholder="ex. 5" required />
-                                </div>
-                                <!-- recipe cook time -->
-                                <div class="form-group mb-0 col-lg-6">
-                                    <label for="inputCookTime" class="mt-2">Cook Time In Minutes</label>
-                                    <input type="number" class="form-control login text-custom" id="recipeCookTime"
-                                        autocomplete="off" min="1" max="999" placeholder="ex. 25" required />
-                                </div>
-                            </div>
-                            <!--ingredients-->
-                            <label for="inputIngredients" class="mt-2">Ingredients</label>
-                            <div class="form-row mb-0 ing-area">
-                                <div class="col-md-6" id="1-i">
-                                    <input type="text" autocomplete="off" maxlength="30" placeholder="Ingredient"
-                                        class="form-control login text-custom" required />
-                                </div>
-                                <div class="col-md-6 col-lg-5" id="1-m">
-                                    <input type="text" autocomplete="off" maxlength="20"
-                                        placeholder="Measurement ex. 1/4 cup" class="form-control login text-custom"
-                                        required />
-                                </div>
-                            </div>
-                            <a class="btn btn-ing" id="add-ing"><i class="fas fa-plus-circle"></i></a>
-                            <a class="btn btn-ing" id="remove-ing"><i class="fas fa-minus-circle"></i></i></a>
-                            <!-- recipe directions -->
-                            <div class="form-group mb-0">
-                                <label for="directionText">Directions</label>
-                                <textarea class="form-control login text-custom" id="directionText" rows="4"
-                                    maxlength="5000" required></textarea>
-                            </div>
-                            <!-- recipe notes -->
-                            <div class="form-group mb-0">
-                                <label for="NotesText">Notes</label>
-                                <textarea class="form-control login text-custom" id="NotesText" rows="2"
-                                    maxlength="3000" required></textarea>
-                            </div>
-                            <!-- image upload -->
-                            <div class="form-group">
-                                <label for="inputImage" class="mt-2">Upload a picture of the final product!</label>
-                                <input type="file" class="my-pond" id="fileInput" required>
-                            </div>
-                            <!-- share recipe -->
-                            <div class="text-center mt-3">
-                                <button type="submit" class="btn btn-black" id="share">Share!</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{#if loggedIn}}
+    {{!-- share recipe modal --}}
+        {{> share}}
     {{/if}}
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/54cb967ed1.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
-    <script src="/javascript/index.js"></script>
+    {{{body}}}
 </body>
 
 </html>

@@ -2,10 +2,12 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Post, Ingredient, Rate, Comment } = require('../models');
 
-//get all posts from all users
-router.get('/', (req, res) => {
-    console.log(req.session);
+//get posts from individual user
+router.get('/:id', (req, res) => {
     Post.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
         include: [
             {
                 model: Rate,
@@ -19,9 +21,9 @@ router.get('/', (req, res) => {
     })
         .then(dbPostData => {
             const post = dbPostData.map(post => post.get({ plain: true }));
-            console.log({ post, loggedIn: req.session.loggedIn, userId: req.session.user_id });
+            console.log(post);
 
-            res.render('homepage', { post, loggedIn: req.session.loggedIn, userId: req.session.user_id });
+            res.render('posts', { post, loggedIn: req.session.loggedIn });
         })
         .catch(err => {
             console.log(err);
@@ -30,8 +32,5 @@ router.get('/', (req, res) => {
 
 
 });
-
-
-
 
 module.exports = router;

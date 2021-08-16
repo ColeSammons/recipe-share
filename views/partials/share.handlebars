@@ -1,0 +1,93 @@
+<div class="modal fade" id="shareBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header sticky-top bg-white">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="close-button">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="recipeTitle">
+                        <h1>RecipeShare</h1>
+                        <p>Add your recipe to the collection!</p>
+                    </div>
+                    <form>
+                        <div class="form-row">
+                            <!--recipe name-->
+                            <div class="form-group mb-0 col-lg-6">
+                                <label for="InputRecipeName" class="mt-2">Recipe Name</label>
+                                <input type="text" autocomplete="off" maxlength="25" id="recipeName"
+                                    placeholder="Recipe Name" class="form-control login text-custom" required />
+                            </div>
+                            <!--recipe category-->
+                            <div class="form-group mb-0 col-lg-6">
+                                <label for="inputRecipeCategory" class="mt-2">Category</label>
+                                <select id="inputRecipeCategory" class="form-control login text-custom" required>
+                                    <option selected></option>
+                                    <option>Breakfast</option>
+                                    <option>Lunch</option>
+                                    <option>Dinner</option>
+                                    <option>Dessert</option>
+                                    <option>Drinks</option>
+                                    <option>Snacks</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- recipe serving size -->
+                            <div class="form-group mb-0 col-lg-6">
+                                <label for="inputServingSize" class="mt-2">Serving Size</label>
+                                <input type="number" class="form-control login text-custom" id="recipeserving"
+                                    autocomplete="off" min="1" max="999" placeholder="ex. 5" required />
+                            </div>
+                            <!-- recipe cook time -->
+                            <div class="form-group mb-0 col-lg-6">
+                                <label for="inputCookTime" class="mt-2">Cook Time In Minutes</label>
+                                <input type="number" class="form-control login text-custom" id="recipeCookTime"
+                                    autocomplete="off" min="1" max="999" placeholder="ex. 25" required />
+                            </div>
+                        </div>
+                        <!--ingredients-->
+                        <label for="inputIngredients" class="mt-2">Ingredients</label>
+                        <div class="form-row mb-0 ing-area">
+                            <div class="col-md-6" id="1-i">
+                                <input type="text" autocomplete="off" maxlength="30" placeholder="Ingredient"
+                                    class="form-control login text-custom" required />
+                            </div>
+                            <div class="col-md-6 col-lg-5" id="1-m">
+                                <input type="text" autocomplete="off" maxlength="20"
+                                    placeholder="Measurement ex. 1/4 cup" class="form-control login text-custom"
+                                    required />
+                            </div>
+                        </div>
+                        <a class="btn btn-ing" id="add-ing"><i class="fas fa-plus-circle"></i></a>
+                        <a class="btn btn-ing" id="remove-ing"><i class="fas fa-minus-circle"></i></i></a>
+                        <!-- recipe directions -->
+                        <div class="form-group mb-0">
+                            <label for="directionText">Directions</label>
+                            <textarea class="form-control login text-custom" id="directionText" rows="4"
+                                maxlength="5000" required></textarea>
+                        </div>
+                        <!-- recipe notes -->
+                        <div class="form-group mb-0">
+                            <label for="NotesText">Notes</label>
+                            <textarea class="form-control login text-custom" id="NotesText" rows="2" maxlength="3000"
+                                required></textarea>
+                        </div>
+                        <!-- image upload -->
+                        <div class="form-group">
+                            <label for="inputImage" class="mt-2">Upload a picture of the final product!</label>
+                            <input type="file" class="my-pond" id="fileInput" required>
+                        </div>
+                        <!-- share recipe -->
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-black" id="share">Share!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

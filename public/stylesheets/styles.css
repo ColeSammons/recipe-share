@@ -208,6 +208,24 @@ body {
   font-size: 20px;
 }
 
+.comment-color {
+  background-color: rgb(250, 248, 248);
+}
+
+/* comment page */
+.edit-delete {
+  color: #212529 !important;
+  font-size: 14px;
+}
+
+.comment-post {
+  color: #212529 !important;
+}
+
+/* .edit-delete:hover {
+  colo;
+} */
+
 /* badges */
 .cat-badge {
   margin-top: 10px;

@@ -18,6 +18,9 @@ module.exports = {
       }
   
       return word;
+    },
+    format_category: post => {
+      return post[0];
     }
   };
   

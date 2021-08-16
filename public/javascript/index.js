@@ -155,7 +155,7 @@ $("#fileInput").change(function () {
 
 
 //recipe.js
-//displays recipe chosen by user
+//displays recipe chosen by user on load
 $(window).on('load', function () {
     $('#recipeChosen').modal('show');
 });
@@ -194,3 +194,4 @@ async function commentHandler(event) {
 }
 
 $('#comment-submit').click(commentHandler)
+
