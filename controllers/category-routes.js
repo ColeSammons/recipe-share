@@ -2,12 +2,9 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Post, Ingredient, Rate, Comment } = require('../models');
 
-//get posts from individual user
-router.get('/:id', (req, res) => {
+//get comments from individual user
+router.get('/:category', (req, res) => {
     Post.findAll({
-        where: {
-            user_id: req.session.user_id
-        },
         include: [
             {
                 model: Rate,
@@ -21,16 +18,24 @@ router.get('/:id', (req, res) => {
     })
         .then(dbPostData => {
             const post = dbPostData.map(post => post.get({ plain: true }));
-            console.log(post);
+            // console.log(post[0].category);
+            const sortedPost = post.filter((data) => {
+                if(data.category == req.params.category) {
+                    return true;
+                }
+                else false;
+            });
+            // console.log({ sortedPost, loggedIn: req.session.loggedIn, userId: req.session.user_id });
 
-            res.render('posts', { post, loggedIn: req.session.loggedIn });
+            res.render('category', { sortedPost, loggedIn: req.session.loggedIn, userId: req.session.user_id, category: req.params.category });
         })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
-});
 
+
+});
 
 
 module.exports = router;
