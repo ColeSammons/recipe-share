@@ -13,18 +13,18 @@
                         <h1>RecipeShare</h1>
                         <p>Add your recipe to the collection!</p>
                     </div>
-                    <form>
+                    <form encType="multipart/form-data" action="/api/posts" method="post">
                         <div class="form-row">
                             <!--recipe name-->
                             <div class="form-group mb-0 col-lg-6">
                                 <label for="InputRecipeName" class="mt-2">Recipe Name</label>
                                 <input type="text" autocomplete="off" maxlength="25" id="recipeName"
-                                    placeholder="Recipe Name" class="form-control login text-custom" required />
+                                    placeholder="Recipe Name" class="form-control login text-custom" required name="name"/>
                             </div>
                             <!--recipe category-->
                             <div class="form-group mb-0 col-lg-6">
                                 <label for="inputRecipeCategory" class="mt-2">Category</label>
-                                <select id="inputRecipeCategory" class="form-control login text-custom" required>
+                                <select id="inputRecipeCategory" class="form-control login text-custom" required name="category">
                                     <option selected></option>
                                     <option>Breakfast</option>
                                     <option>Lunch</option>
@@ -40,13 +40,13 @@
                             <div class="form-group mb-0 col-lg-6">
                                 <label for="inputServingSize" class="mt-2">Serving Size</label>
                                 <input type="number" class="form-control login text-custom" id="recipeserving"
-                                    autocomplete="off" min="1" max="999" placeholder="ex. 5" required />
+                                    autocomplete="off" min="1" max="999" placeholder="ex. 5" required name="serving"/>
                             </div>
                             <!-- recipe cook time -->
                             <div class="form-group mb-0 col-lg-6">
                                 <label for="inputCookTime" class="mt-2">Cook Time In Minutes</label>
                                 <input type="number" class="form-control login text-custom" id="recipeCookTime"
-                                    autocomplete="off" min="1" max="999" placeholder="ex. 25" required />
+                                    autocomplete="off" min="1" max="999" placeholder="ex. 25" required name="time"/>
                             </div>
                         </div>
                         <!--ingredients-->
@@ -54,12 +54,12 @@
                         <div class="form-row mb-0 ing-area">
                             <div class="col-md-6" id="1-i">
                                 <input type="text" autocomplete="off" maxlength="30" placeholder="Ingredient"
-                                    class="form-control login text-custom" required />
+                                    class="form-control login text-custom" required name="ingName"/>
                             </div>
-                            <div class="col-md-6 col-lg-5" id="1-m">
+                            <div class="col-md-6 col-lg-5 ing-margin" id="1-m">
                                 <input type="text" autocomplete="off" maxlength="20"
                                     placeholder="Measurement ex. 1/4 cup" class="form-control login text-custom"
-                                    required />
+                                    required name="ingMeasure"/>
                             </div>
                         </div>
                         <a class="btn btn-ing" id="add-ing"><i class="fas fa-plus-circle"></i></a>
@@ -68,18 +68,18 @@
                         <div class="form-group mb-0">
                             <label for="directionText">Directions</label>
                             <textarea class="form-control login text-custom" id="directionText" rows="4"
-                                maxlength="5000" required></textarea>
+                                maxlength="5000" required name="directions"></textarea>
                         </div>
                         <!-- recipe notes -->
                         <div class="form-group mb-0">
                             <label for="NotesText">Notes</label>
                             <textarea class="form-control login text-custom" id="NotesText" rows="2" maxlength="3000"
-                                required></textarea>
+                                required name="notes"></textarea>
                         </div>
                         <!-- image upload -->
                         <div class="form-group">
                             <label for="inputImage" class="mt-2">Upload a picture of the final product!</label>
-                            <input type="file" class="my-pond" id="fileInput" required>
+                            <input type="file" name="file-pic" id="fileInput" required>
                         </div>
                         <!-- share recipe -->
                         <div class="text-center mt-3">
@@ -91,3 +91,6 @@
         </div>
     </div>
 </div>
+
+<!--class="my-pond"-->
+{{!-- action="/api/posts" method="post" --}}

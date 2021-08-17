@@ -20,9 +20,13 @@ router.get('/:id', (req, res) => {
         ]
     })
         .then(dbPostData => {
-            const post = dbPostData.map(post => post.get({ plain: true }));
+            let post = dbPostData.map(post => post.get({ plain: true }));
             console.log(post);
-
+            post.forEach(data => {
+                const buffer = Buffer.from(data.pic_buffer);
+                const conversion = buffer.toString('base64');
+                data.conversion = conversion;
+            });
             res.render('posts', { post, loggedIn: req.session.loggedIn });
         })
         .catch(err => {

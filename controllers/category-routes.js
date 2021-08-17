@@ -17,8 +17,12 @@ router.get('/:category', (req, res) => {
         ]
     })
         .then(dbPostData => {
-            const post = dbPostData.map(post => post.get({ plain: true }));
-            // console.log(post[0].category);
+            let post = dbPostData.map(post => post.get({ plain: true }));
+            post.forEach(data => {
+                const buffer = Buffer.from(data.pic_buffer);
+                const conversion = buffer.toString('base64');
+                data.conversion = conversion;
+            });
             const sortedPost = post.filter((data) => {
                 if(data.category == req.params.category) {
                     return true;

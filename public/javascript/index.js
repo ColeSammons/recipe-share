@@ -14,14 +14,14 @@ $("#loginAccount").click(function () {
 // add new ingredient line to recipe sharing
 $("#add-ing").click(function () {
     let rand = Math.floor(Math.random() * 10000);
-    let new_input = ` <div class="col-md-5 col-sm-6" id="${rand}-i">
+    let new_input = ` <div class="col-md-6" id="${rand}-i">
     <input type="text" autocomplete="off" maxlength="30" 
-        placeholder="Ingredient" class="form-control login text-custom" required />
+        placeholder="Ingredient" class="form-control login text-custom" required name="ingName"/>
 </div>
-<div class="col-md-3 col-sm-6" id="${rand}-m">
+<div class="col-md-6 col-lg-5 ing-margin" id="${rand}-m">
     <input type="text" autocomplete="off" maxlength="20" 
         placeholder="Measurement ex. 1/4 cup" class="form-control login text-custom"
-        required />
+        required name="ingMeasure"/>
 </div>`;
 
     $(".ing-area").append(new_input);
@@ -113,44 +113,10 @@ $('#remove-ing').click(function () {
     }
 });
 
-
-
-
-
-
-// Turn input element into a pond
-$('.my-pond').filepond();
-
-// Turn input element into a pond with configuration options
-// $('.my-pond').filepond({
-//     allowMultiple: true,
-// });
-
-// Set allowMultiple property to true
-// $('.my-pond').filepond('allowMultiple', false);
-
-// Listen for addfile event
-$('.my-pond').on('FilePond:addfile', function (e) {
-    // console.log('file added event', e);
-
-});
-
-$("#fileInput").change(function () {
-    console.log(this);
-});
-
-// Manually add a file using the addfile method
-// $('.my-pond')
-//     .filepond('addFile', 'index.html')
-//     .then(function (file) {
-//         console.log('file added', file);
-//     });
-
-
-
-
-
-
+$('#share').click(function(event) {
+    // event.preventDefault();
+    // document.location.replace("/");
+})
 
 
 

@@ -12,7 +12,7 @@
                 <div id="recipes">
                     <div class="container justify-content-center d-flex">
                         <div class="col-lg-12 adjust-padding">
-                            <img src="{{post.pic_url}}" alt="{{post.name}}" class="img-fluid" />
+                            <img src="data:{{post.mimetype}};base64,{{post.conversion}}" alt="{{post.name}}" class="img-fluid" />
                             <div class="recipeTitle">
                                 <h1 class="mb-0">{{post.name}}</h1>
                             </div>

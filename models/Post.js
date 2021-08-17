@@ -41,12 +41,13 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false
     },
-    pic_url: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isURL: true
-      }
+    mimetype: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    pic_buffer: {
+      type: DataTypes.BLOB("long"),
+      allowNull: false
     },
     category: {
       type: DataTypes.STRING,
