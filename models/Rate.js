@@ -24,6 +24,10 @@ Rate.init(
                   }
             }
         },
+        update: {
+            type: DataTypes.STRING,
+            allowNull:false
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {

@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
     measure: req.body.measure,
     post_id: req.body.post_id
   })
-    .then(dbIngtData => res.json(dbIngData))
+    .then(dbIngData => res.json(dbIngData))
     .catch(err => {
       console.log(err);
       res.status(400).json(err);

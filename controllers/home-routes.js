@@ -8,8 +8,7 @@ router.get('/', (req, res) => {
     Post.findAll({
         include: [
             {
-                model: Rate,
-                attributes: ['id', 'rating', 'user_id', 'post_id']
+                model: Rate
             },
             {
                 model: User,
@@ -21,7 +20,14 @@ router.get('/', (req, res) => {
             let post = dbPostData.map(post => post.get({ plain: true }));
             console.log({ post, loggedIn: req.session.loggedIn, userId: req.session.user_id });
 
-
+            post.forEach(temp => {
+                temp.rates.forEach(data => {
+                    if(req.session.user_id == data.user_id) {
+                      data.owned = true;
+                    }
+                  });
+            })
+            console.log(post[0].rates);
             post.forEach(data => {
                 const buffer = Buffer.from(data.pic_buffer);
                 const conversion = buffer.toString('base64');

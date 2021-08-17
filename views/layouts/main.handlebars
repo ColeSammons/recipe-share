@@ -117,35 +117,6 @@
     {{> signup}}
     {{/unless}}
 
-    <!-- multiple recipe modal -->
-    <div class="modal fade" id="recipeBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
-        aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <div class="modal-header sticky-top bg-white">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="close-button">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div id="recipes">
-                        <div class="container">
-                            <div class="recipeTitle">
-                                <h1>Recipes</h1>
-                                <p>Recipes from all your fellow sharers</p>
-                            </div>
-                            <div class="row">
-                                {{#each post}}
-                                    {{> card}}
-                                {{/each}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     {{#if loggedIn}}
     {{!-- share recipe modal --}}
         {{> share}}

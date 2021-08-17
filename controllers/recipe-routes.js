@@ -20,8 +20,7 @@ router.get('/:id', (req, res) => {
         }
       },
       {
-        model: Rate,
-        attributes: ['id', 'rating', 'user_id', 'post_id']
+        model: Rate
       },
       {
         model: User,
@@ -35,12 +34,24 @@ router.get('/:id', (req, res) => {
         return;
       }
       let post = dbPostData.get({ plain: true });
+      console.log(post);
       const buffer = Buffer.from(post.pic_buffer);
       const conversion = buffer.toString('base64');
       post.conversion = conversion;
-      console.log(post);
+      let userPost = false;
 
-      res.render('recipe', { post, loggedIn: req.session.loggedIn });
+      if(req.session.user_id == post.user_id) {
+        userPost = true;
+      }
+      console.log(userPost);
+
+      post.rates.forEach(data => {
+        if(req.session.user_id == data.user_id) {
+          data.owned = true;
+        }
+      });
+      console.log(post.rates);
+      res.render('recipe', { post, loggedIn: req.session.loggedIn, userPost: userPost });
     })
     .catch(err => {
       console.log(err);
