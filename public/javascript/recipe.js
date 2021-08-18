@@ -91,6 +91,6 @@ async function deletePostHandler(event) {
 }
 
 
-$('#post-edit').click(editPostHandler)
-$('#post-delete').click(deletePostHandler)
-$('#comment-submit').click(commentHandler)
+$('#post-edit').click(editPostHandler);
+$('#post-delete').click(deletePostHandler);
+$('#comment-submit').click(commentHandler);
