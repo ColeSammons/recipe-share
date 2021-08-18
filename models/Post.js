@@ -42,7 +42,7 @@ Post.init(
       allowNull: false
     },
     mimetype: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false
     },
     pic_buffer: {
