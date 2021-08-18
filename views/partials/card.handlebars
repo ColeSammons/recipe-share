@@ -1,11 +1,11 @@
-<div class="col-lg-4 col-md-12" href="#">
-    <div class="card">
+<div class="col-xl-4 col-lg-6 d-flex justify-content-center" href="#">
+    <div class="card fix-width">
         <img src="data:{{mimetype}};base64,{{conversion}}" alt="{{name}}" class="card-img-top" />
         <div class="card-body">
             <span class="d-flex justify-content-between"><span
                     class="badge badge{{category}} cat-badge">{{category}}</span>
                 {{#if average}}
-                <span class="avg-rating">{{average}} star avg.</span>
+                <span class="avg-rating">{{average}} <i class="fas fa-star card-rating"></i> by {{users}} {{format_plural "user" users}}</span>
                 {{/if}}
             </span>
             <h5 class="card-title word-wrap">{{name}}</h5>

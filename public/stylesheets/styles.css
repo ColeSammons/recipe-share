@@ -134,8 +134,11 @@ body {
 }
 
 .card img {
-  /* max-height: 300px; */
   height: 250px;
+}
+
+.fix-width {
+  max-width: 316px;
 }
 
 .card-body {

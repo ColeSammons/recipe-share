@@ -19,17 +19,21 @@ router.get('/', (req, res) => {
         .then(dbPostData => {
             let post = dbPostData.map(post => post.get({ plain: true }));
             let count = 0;
+            let users = 0;
 
             post.forEach(temp => {
                if(temp.rates.length != 0) {
                 temp.rates.forEach(data => {
                     count += data.rating;
+                    users++;
                     if (req.session.user_id == data.user_id) {
                         data.owned = true;
                     }
                 });
                 if (count != 0) {
+                    temp.users = users;
                     temp.average = (Math.floor(count / temp.rates.length));
+                    users = 0;
                     count = 0;
 
                 }

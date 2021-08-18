@@ -15,18 +15,18 @@ module.exports = {
       .split('?')[0];
   },
   format_plural: (word, amount) => {
-    if (amount !== 1) {
-      return `${word}s`;
-    }
+    if (amount == 1) {
+      return word;
 
-    return word;
+    }
+    return `${word}s`;
   },
   format_category: post => {
     return post[0];
   },
-  format_type: rates1 => {
+  format_type: rates => {
     let own = false;
-    rates1.forEach(data => {
+    rates.forEach(data => {
       if (data.owned == true) {
         rate = data.rating;
         own = true;
@@ -35,10 +35,10 @@ module.exports = {
     if (own) return `put`;
     else return 'post';
   },
-  format_rating: rates2 => {
+  format_rating: rates => {
     let own = false;
     let rate;
-    rates2.forEach(data => {
+    rates.forEach(data => {
       if (data.owned == true) {
         rate = data.rating;
         own = true;
@@ -133,10 +133,10 @@ module.exports = {
     }
 
   },
-  format_card_rating: rates3 => {
+  format_card_rating: rates => {
     let own = false;
     let rate;
-    rates3.forEach(data => {
+    rates.forEach(data => {
       if (data.owned == true) {
         rate = data.rating;
         own = true;
@@ -202,14 +202,14 @@ module.exports = {
     }
     else {
       let doc =
-          `
+        `
           <i class="far fa-star "></i>
           <i class="far fa-star"></i>
           <i class="far fa-star"></i>
           <i class="far fa-star"></i>
           <i class="far fa-star"></i>
       `
-        return new Handlebars.SafeString(doc);
+      return new Handlebars.SafeString(doc);
     }
 
   }

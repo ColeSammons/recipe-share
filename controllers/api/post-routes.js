@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const upload = require('../../config/multer.js');
+const multer = require('multer');
+var storage = multer.memoryStorage()
+var upload = multer({storage: storage});
 const { User, Post, Ingredient, Rate, Comment } = require('../../models');
 
 router.get('/', (req, res) => {
