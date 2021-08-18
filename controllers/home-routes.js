@@ -30,6 +30,7 @@ router.get('/', (req, res) => {
                 });
                 if (count != 0) {
                     temp.average = (Math.floor(count / temp.rates.length));
+                    count = 0;
 
                 }
                }
