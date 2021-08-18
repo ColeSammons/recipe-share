@@ -11,7 +11,7 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
-  secret: process.env.DB_SECRET,
+  secret: 'dogs are stinky',
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -28,8 +28,6 @@ const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 
-// temporary until helpers in place
-// app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 
 app.set('view engine', 'handlebars');
 
