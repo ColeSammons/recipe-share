@@ -13,16 +13,7 @@ Rate.init(
         },
         rating: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                isInt: true,
-                isDecimal: false,
-                islessThan(value) {
-                    if (value > 5 | value < 1) {
-                      throw new Error('Rating is be out of 5 and not less than 1');
-                    }
-                  }
-            }
+            allowNull: false
         },
         update: {
             type: DataTypes.STRING,

@@ -8,21 +8,20 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ['id', 'name', 'serving', 'time', 'directions', 'notes', 'pic_url', 'category', 'user_id'],
         include: [
           {
             model: Ingredient,
-            attributes: ['id', 'name', 'measure', 'post_id']
+            
           },
           {
             model: Comment,
-            attributes: ['id', 'text', 'post_id', 'user_id'],
+            
           },
         ]
       },
       {
         model: Comment,
-        attributes: ['id', 'text', 'user_id', 'post_id'],
+        
         include: {
           model: Post,
           attributes: ['name']

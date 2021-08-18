@@ -189,5 +189,26 @@ async function commentHandler(event) {
     }
 }
 
+async function editPostHandler(event) {
+    console.log(event.target.parentNode.id);
+}
+
+async function deletePostHandler(event) {
+    console.log(event.target.parentNode.id);
+    const id = event.target.parentNode.id;
+    const response = await fetch(`/api/posts/${id}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        document.location.replace("/");
+    } else {
+        alert(response.statusText);
+    }
+}
+
+
+$('#post-edit').click(editPostHandler)
+$('#post-delete').click(deletePostHandler)
 $('#comment-submit').click(commentHandler)
 

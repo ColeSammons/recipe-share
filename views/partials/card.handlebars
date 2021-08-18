@@ -2,7 +2,12 @@
     <div class="card">
         <img src="data:{{mimetype}};base64,{{conversion}}" alt="{{name}}" class="card-img-top" />
         <div class="card-body">
-            <span class="badge badge{{category}} cat-badge">{{category}}</span>
+            <span class="d-flex justify-content-between"><span
+                    class="badge badge{{category}} cat-badge">{{category}}</span>
+                {{#if average}}
+                <span class="avg-rating">{{average}} star avg.</span>
+                {{/if}}
+            </span>
             <h5 class="card-title word-wrap">{{name}}</h5>
             <p class="recipeUsername word-wrap">By: {{user.username}}</p>
             <span class="d-flex justify-content-between">
