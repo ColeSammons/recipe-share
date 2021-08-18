@@ -212,5 +212,62 @@ module.exports = {
       return new Handlebars.SafeString(doc);
     }
 
+  },
+  format_rate: rate => {
+    if (rate.rating == 5) {
+      let doc =
+        `
+        <i class="fas fa-star "></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+    `
+      return new Handlebars.SafeString(doc);
+    }
+    if (rate.rating == 4) {
+      let doc =
+        `
+        <i class="fas fa-star "></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+    `
+      return new Handlebars.SafeString(doc);
+    }
+    if (rate.rating == 3) {
+      let doc =
+        `
+        <i class="fas fa-star "></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+    `
+      return new Handlebars.SafeString(doc);
+    }
+    if (rate.rating == 2) {
+      let doc =
+        `
+        <i class="fas fa-star "></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+    `
+      return new Handlebars.SafeString(doc);
+    }
+    if (rate.rating == 1) {
+      let doc =
+        `
+        <i class="fas fa-star "></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+    `
+      return new Handlebars.SafeString(doc);
+    }
   }
 }
