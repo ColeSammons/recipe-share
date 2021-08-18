@@ -22,6 +22,23 @@ router.get('/:id', (req, res) => {
         .then(dbPostData => {
             let post = dbPostData.map(post => post.get({ plain: true }));
             console.log(post);
+            let count = 0;
+
+            post.forEach(temp => {
+                if (temp.rates.length != 0) {
+                    temp.rates.forEach(data => {
+                        count += data.rating;
+                        if (req.session.user_id == data.user_id) {
+                            data.owned = true;
+                        }
+                    });
+                    if (count != 0) {
+                        temp.average = (Math.floor(count / temp.rates.length));
+                        count = 0;
+
+                    }
+                }
+            });
             post.forEach(data => {
                 const buffer = Buffer.from(data.pic_buffer);
                 const conversion = buffer.toString('base64');
