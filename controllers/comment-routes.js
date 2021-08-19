@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
             const post = dbPostData.map(post => post.get({ plain: true }));
             console.log(post);
 
-            res.render('comment', { post, loggedIn: req.session.loggedIn });
+            res.render('comment', { post, loggedIn: req.session.loggedIn, username: req.session.username });
         })
         .catch(err => {
             console.log(err);

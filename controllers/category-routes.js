@@ -49,7 +49,7 @@ router.get('/:category', (req, res) => {
             });
             // console.log({ sortedPost, loggedIn: req.session.loggedIn, userId: req.session.user_id });
 
-            res.render('category', { sortedPost, loggedIn: req.session.loggedIn, userId: req.session.user_id, category: req.params.category });
+            res.render('category', { sortedPost, loggedIn: req.session.loggedIn, userId: req.session.user_id, category: req.params.category, username: req.session.username });
         })
         .catch(err => {
             console.log(err);

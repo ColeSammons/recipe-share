@@ -39,14 +39,14 @@ router.get('/', (req, res) => {
                 }
                }
             })
-            console.log({ post, loggedIn: req.session.loggedIn, userId: req.session.user_id });
+            console.log({ post, loggedIn: req.session.loggedIn, userId: req.session.user_id, username: req.session.username });
 
             post.forEach(data => {
                 const buffer = Buffer.from(data.pic_buffer);
                 const conversion = buffer.toString('base64');
                 data.conversion = conversion;
             });
-            res.render('homepage', { post, loggedIn: req.session.loggedIn, userId: req.session.user_id });
+            res.render('homepage', { post, loggedIn: req.session.loggedIn, userId: req.session.user_id, username: req.session.username });
         })
         .catch(err => {
             console.log(err);

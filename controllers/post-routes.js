@@ -44,7 +44,7 @@ router.get('/:id', (req, res) => {
                 const conversion = buffer.toString('base64');
                 data.conversion = conversion;
             });
-            res.render('posts', { post, loggedIn: req.session.loggedIn });
+            res.render('posts', { post, loggedIn: req.session.loggedIn, username: req.session.username });
         })
         .catch(err => {
             console.log(err);

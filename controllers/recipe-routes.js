@@ -51,7 +51,7 @@ router.get('/:id', (req, res) => {
         }
       });
       console.log(post.rates);
-      res.render('recipe', { post, loggedIn: req.session.loggedIn, userPost: userPost });
+      res.render('recipe', { post, loggedIn: req.session.loggedIn, userPost: userPost, username: req.session.username });
     })
     .catch(err => {
       console.log(err);

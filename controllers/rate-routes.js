@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
             const rate = dbPostData.map(post => post.get({ plain: true }));
             console.log(rate);
 
-            res.render('rate', { rate, loggedIn: req.session.loggedIn });
+            res.render('rate', { rate, loggedIn: req.session.loggedIn, username: req.session.username });
         })
         .catch(err => {
             console.log(err);
