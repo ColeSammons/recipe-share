@@ -10,7 +10,13 @@ router.get('/:id', (req, res) => {
         },
         include: [
             {
-                model: Post
+                model: Post,
+                include: [
+                    {
+                        model: User
+
+                    }
+                ]
             },
             {
                 model: User
