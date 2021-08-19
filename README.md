@@ -64,3 +64,4 @@
   ![Screenshot](/public/images/recipes.png)
   ![Screenshot](/public/images/recipe.png)
 
+This is a student project and all recipes and images were taken from allrecipes.com.

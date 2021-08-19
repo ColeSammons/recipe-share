@@ -135,10 +135,12 @@ body {
 
 .card img {
   height: 250px;
+  width: 316px;
 }
 
 .fix-width {
   width: 316px;
+  height: 386px;
 }
 
 .card-body {
